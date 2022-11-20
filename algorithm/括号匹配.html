@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function isValid(str) {
+      let array = str.split("")
+      let left = []
+      for (let index = 0; index < array.length; index++) {
+        if(array[index] == "{" || array[index] == "(" || array[index] == "["){
+          left.push(array[index])
+          console.log(left);
+        } else{
+          console.log(left);
+          if(array[index] == "}" && left.pop() != "{" ){
+            return false
+          }
+          if(array[index] == ")" && left.pop() != "(" ){
+            return false
+          }
+          if(array[index] == "]" && left.pop() != "[" ){
+            return false
+          }
+          console.log(left);
+        }
+        
+      }
+      return left.length == 0
+    }
+    console.log(isValid("()"));
+  </script>
+</body>
+</html>
