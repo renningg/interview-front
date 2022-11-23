@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="fa">
+        <div class="left">
+            <div class="left-item">
+
+            </div>
+            <div class="left-item">
+
+            </div>
+        </div>
+        <div class="middle">
+            <div class="middle-item"></div>
+        </div>
+        <div class="right">
+            <div class="right-item"></div>
+            <div class="right-item"></div>
+        </div>
+    </div>
+</body>
+<style>
+    .fa {
+        box-sizing: content-box;
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .left,
+    .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .middle {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        height: 200px;
+    }
+
+    .middle-item {
+
+        width: 1px;
+        height: 50px;
+        background-color: black;
+    }
+
+    .left-item,
+    .right-item {
+        width: 1px;
+        height: 50px;
+        background-color: black;
+    }
+</style>
+
+</html>
