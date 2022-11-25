@@ -25,6 +25,8 @@
     输出：[[0,0,0]]
     解释：唯一可能的三元组和为 0 。
  */
+// 思路：
+// 首先将数组排序，利用左右指针
 
 var threeSum = function (nums) {
     nums.sort((num1, num2) => num1 - num2);
@@ -48,4 +50,31 @@ var threeSum = function (nums) {
     }
     return result;
 };
+
+
+function test(nums) {
+    let arr = nums.sort((a,b)=>a-b)
+    let result = []
+    let n = arr.length
+    if(arr[0] >= 0) return []
+    let left,right;
+    for (let i = 0; i < n; i++) {
+        left = i + 1;
+        right = n - 1
+        while (left < right) {
+            if(arr[i] + arr[left] + arr[right] == 0){
+                result.push([arr[i] , arr[left] , arr[right]])
+                left++;
+                right--;
+            } else {
+                arr[i] + arr[left] + arr[right] > 0 ? right-- : left++
+            }
+            while(left > i + 1 && arr[left] == arr[left - 1]) left++
+            while(right < n - 1 && arr[right] == arr[right + 1]) right--
+        }
+        
+
+        
+    }
+}
 

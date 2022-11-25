@@ -59,8 +59,24 @@ const data = [
     { id: '15', name: '小涛', pid: '06', job: '运维工程师' }
 ]
 
-const tree = arrToTree(data)
-console.log(tree)
+function test(data) {
+    let tree = []
+    let map = {}
+    data.forEach(item=>{
+        map[item.id] = item
+    })
+    data.forEach(item=>{
+        let parent = map[item.pid]
+        delete item.pid
+        item['label'] = item.name
+        delete item.name
+        if(parent){
+            parent.children = parent.children || (parent.children = [])
+            parent.children.push(item)
+        }else tree.push(item)
+    })
+    return tree
+}
 
 function arrToTree(data) {
     let tree = []
@@ -87,3 +103,6 @@ function arrToTree(data) {
     })
     return tree
 }
+
+const tree = test(data)
+console.log(tree)

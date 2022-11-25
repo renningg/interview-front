@@ -10,6 +10,7 @@
 
 <body>
   <script>
+    // await 是同步，但是会阻塞后面的代码执行。微任务队列，先进先出
     // 1、7、6、8、2、4、3、5、9、11、10、12
     console.log('1');
     setTimeout(function () {
