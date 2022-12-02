@@ -11,8 +11,9 @@ deactivated
 < keep-alive > 标签，可以把内部的组件进行缓存，而不是销毁组件；
 默认情况下，切换动态组件时无法保持组件的状态，此时可以使用 vue 内置的 < keep-alive > 标签保持动态组件的状态；
 < keep-alive > 的生命周期；重点来了！！！
-当组件被缓存时，会自动触发组件的 deactivated 生命周期函数；
-当组件被激活时，会自动触发组件的 activated 生命周期函数；
+当组件被 “激活” 时，会自动触发组件的 activated 生命周期函数；
+当组件被 “缓存” 时，也就是该组件停用时，会自动触发组件的 deactivated 生命周期函数；
+
 
 
 activated与deactivated
