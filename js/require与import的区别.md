@@ -60,6 +60,16 @@ import/export
     <Button type="primary" onClick={click}>require </Button>
 </script>
 
+# 一般情况下，node中的模块化标准是CommonJs
+#  要想使用ES模块化，可以采用以下两种方案
+# (1) 使用mjs作为扩展名
+# (2) 修改package.json将模块化规范设置为ES模块
+#     当我们设置"type":"module" 当前项目下所有的js文件都默认使用ES module
+
+# 通过ES模块化，导入的内容都是常量。常量不可被修改，但是常量的对象可以被修改
+# ES模块都是运行在严格模式下的
+# ES模块化，在浏览器中同样支持，但是通常不会直接使用，通常会结合打包工具使用
+
 结果分析：通过 import 引入 counts 的变量，在源文件中修改变量的值后，引入拿到的变量值也会改变。
 
 require和import的区别

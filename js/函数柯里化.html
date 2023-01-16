@@ -20,9 +20,7 @@
 
       // 改写toString方法的内容，输出sum的结果
       inner.toString = function () {
-        return args.reduce((prev, cur) => {
-          return prev + cur;
-        });
+        return args.reduce((prev, cur) => prev + cur);
       }
       return inner;
     }

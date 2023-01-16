@@ -66,3 +66,20 @@ function deepCopy(item, cache = new Set()) {
 }
 
 
+function deepCloneSimple(item) {
+
+    if (typeof item !== "object") return false
+    let ctor = item.constructor
+    let result = new ctor()
+    let keys = Object.keys(item)
+    keys.forEach((index, value) => {
+        while (item.hasOwnProperty(value)) {
+            deepCloneSimple(value)
+        }
+        result[index] = value
+    })
+    return result
+
+}
+
+

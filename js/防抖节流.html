@@ -21,7 +21,7 @@
             return () => {
                 clearTimeout(timer)
                 timer = setTimeout(() => {
-                    fn.call(this)
+                    fn.call(this)  
                 }, delay)
             }
         }
