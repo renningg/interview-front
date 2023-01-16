@@ -1,5 +1,18 @@
 // JSON的parse和stringify方法也可以实现强拷贝
 
+// 比较简单的深拷贝写法
+function deepClone(item) {
+    if (typeof item != "object" || item == null) return item
+    let result = item.constructor()
+    for (const key in item) {
+        if (item.hasOwnProperty(key)) {
+            result[key] = deepClone(item[key])
+        }
+    }
+    return result
+}
+
+
 // 浅克隆
 function shallowClone(obj) {
     let type = _.toType(obj),
@@ -54,11 +67,11 @@ function deepClone(obj, cache = new Set()) {
     // 避免无限套娃
     if (cache.has(obj)) return obj;
     cache.add(obj);
-    
+
     let keys = [
-            ...Object.keys(obj),
-            ...Object.getOwnPropertySymbols(obj)
-        ],
+        ...Object.keys(obj),
+        ...Object.getOwnPropertySymbols(obj)
+    ],
         result = new Ctor();
     _.each(keys, key => {
         // 再次调用deepClone的时候把catch传递进去，保证每一次递归都是一个cache
@@ -97,11 +110,11 @@ obj.xxx = {
 // newArr = arr.slice();
 
 // 对象的浅拷贝
-/* 
+/*
 let newObj = {
     ...obj
 };
-newObj = Object.assign({}, obj); 
+newObj = Object.assign({}, obj);
 // 处理的时候包含了原始对象中 Symbol属性 的处理
 */
 
