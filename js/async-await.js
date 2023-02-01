@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+  // <!-- https://blog.csdn.net/qq_42941302/article/details/109245356?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166890840816782428682936%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166890840816782428682936&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-109245356-null-null.142^v65^opensearch_v2,201^v3^control_2,213^v2^t3_esquery_v3&utm_term=async%20await&spm=1018.2226.3001.4187 -->
 
-<body>
-  <!-- https://blog.csdn.net/qq_42941302/article/details/109245356?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166890840816782428682936%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166890840816782428682936&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-109245356-null-null.142^v65^opensearch_v2,201^v3^control_2,213^v2^t3_esquery_v3&utm_term=async%20await&spm=1018.2226.3001.4187 -->
-  <script>
     // async/await是什么
     // async/await 是ES7提出的基于Promise的解决异步的最终方案。async/await 是消灭异步回调的终极武器
     // async
@@ -118,12 +108,3 @@
       const img2 = await loadImg(url2)
       document.body.appendChild(img2)
     })()
-
-
-
-
-  </script>
-
-</body>
-
-</html>

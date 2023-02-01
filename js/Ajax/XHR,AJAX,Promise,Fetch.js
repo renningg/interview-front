@@ -3,7 +3,7 @@
 // 如何使用？① 创建 XMLHTTPRequest 对象；② 发送请求；③ 接受服务器传回的数据；④ 更新网页数据
 
 // 二，AJAX：Asynchronous JavaScript and XML ,翻译为：异步的JavaScript和XML，是一种用于创建
-//    动态网页X技术，脚本独立向服务器请求数据，拿到数据，进行网页的局部更新的技术。通过AJA
+//    动态网页X技术，脚本独立向服务器请求数据，拿到数据，进行网页的局部更新的技术。
 //    缺点：存在地狱回调的问题。如何解决？基于Promise管理的axios解决了回调问题 (async/await: 使异步操作以同步的方式去执行)
 
 // 三，手写Promise

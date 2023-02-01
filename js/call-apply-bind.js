@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <script>
         // https://blog.csdn.net/m0_46171043/article/details/123067986?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166873800916782414911458%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=166873800916782414911458&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-2-123067986-null-null.142^v65^control,201^v3^add_ask,213^v2^t3_esquery_v2&utm_term=js%E7%9A%84%E5%87%BD%E6%95%B0%20call%E5%92%8Capply%20bind%E6%89%8B%E5%86%99&spm=1018.2226.3001.4187
 
         // 1.call和apply都是对函数的直接调用（也叫直接执行函数），而bind方法返回的仍然是一个函数，
@@ -99,7 +88,3 @@
                 self.apply(context, params.concat(args));
             };
         };
-    </script>
-</body>
-
-</html>

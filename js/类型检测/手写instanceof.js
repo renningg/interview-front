@@ -44,16 +44,3 @@ function myInstanceof(obj, func) {
 
 // console.log(myInstanceOf([], Array));
 
-
-function wt(item,fun) {
-  if((typeof item !== "function" && typeof item !== "object") || item == null) return false
-  let protype = fun.prototype
-  let __proto__ = item.__proto__
-  while (__proto__ !== protype) {
-    __proto__ = item.__proto__
-    if(!__proto__) return false
-  }
-  return true
-}
-
-console.log(wt([],Object));

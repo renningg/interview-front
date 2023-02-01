@@ -1,30 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-
-  <script>
     // 微任务队列，先进先出的原则，
-    async function async1() {
-      console.log('async1 start');
-      await async2();
-      console.log('async1 end');
-    }
 
-    async function async2() {
-      console.log('async2 start');
-      return new Promise((resolve, reject) => {
-        resolve();
-        console.log('async2 promise');
-      })
-    }
 
     console.log('script start');
 
@@ -56,7 +32,3 @@
     // promise2
     // promise3
     // setTimeout
-  </script>
-</body>
-
-</html>
