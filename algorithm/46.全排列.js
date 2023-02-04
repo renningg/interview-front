@@ -16,34 +16,16 @@
  * @return {number[][]}
  */
 var permute = function (nums) {
-    if (nums.length == 0) return
-    let res = []
-    for (let i = 0; i < nums.length; i++) {
-        if (!res[i]) res[i] = []
-        res[i].push(i)
-        permute(nums.splice(i, 1))
-    }
-    return res
-};
-console.log(permute([1, 2, 3]));
-
-
-/**
- * @param {number[]} nums
- * @return {number[][]}
- */
-var permute = function(nums) {
     const res = [], path = [];
     backtracking(nums, nums.length, []);
     return res;
-    
     function backtracking(n, k, used) {
-        if(path.length === k) {
+        if (path.length === k) {
             res.push(Array.from(path));
             return;
         }
-        for (let i = 0; i < k; i++ ) {
-            if(used[i]) continue;
+        for (let i = 0; i < k; i++) {
+            if (used[i]) continue;
             path.push(n[i]);
             used[i] = true; // 同支
             backtracking(n, k, used);
@@ -52,4 +34,4 @@ var permute = function(nums) {
         }
     }
 };
-
+console.log(permute([1, 2, 3]));

@@ -1,7 +1,3 @@
-function myReduce(cb, initValue) {
-
-}
-
 Array.prototype.myReduce = function (cb, initialValue) {
     // previousValue, currentValue, currentIndex, array
     const array = this  //获取数组

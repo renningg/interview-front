@@ -32,7 +32,19 @@
 // https://juejin.cn/post/6941023062833758222#heading-9
 // console.log('第二题');
 console.log('script start')
-
+/****
+ * script start
+ * async2 end
+ * Promise
+ * script end
+ * async2 end1
+ * promise1
+ * promise4
+ * async1 end
+ * promise2
+ * promise3
+ * setTimeout
+ */
 async function async1() {
   // await async2()
   // console.log('async1 end')
