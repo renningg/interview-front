@@ -11,17 +11,19 @@ function formate(nums) {
   return result.toString()
 }
 
-function test(nums) {
-  let result = ""
-  let count = 0
-  let str = nums.toString()
-  for (let i = str.length - 1; i >= 0; i--) {
-    count++
-    result = str.charAt(i) + result
-    if (!(count % 3) && i != 0) { result = "," + result }
+function fn(nums){
+  let res = []
+  let str = nums + ''
+  for(let i = str.length ; i > 0 ; i-=3){
+    res.push(str[i - 1])
+    res.push(str[i - 2])
+    res.push(str[i - 3])
+    res.push(',')
   }
-  return result
+  res.pop()
+  
+  return res.reverse().join('')
 }
 
 
-console.log(test(nums));
+console.log(fn(nums));

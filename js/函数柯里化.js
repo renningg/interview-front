@@ -22,7 +22,4 @@ function add() {
 }
 // parseInt 返回指定的整数
 console.log(parseInt(add(1)(2)(3)(4)));
-// 返回字符串类型的结果
-// console.log('' + add(1)(2)(3)(4));
-// console.log(1 == 1);
 

@@ -107,3 +107,18 @@ obj.fun(); //输出 {name: "obj", fun: ƒ}
 // };
 
 // console.log(obj.fun2());
+
+
+var name = 'win'
+const obj = {
+name: "obj",
+a:() =>{
+console.log(this.name)
+}
+}
+const obj1 = {
+name: "obj1"
+}
+obj.a.call(obj1)
+
+

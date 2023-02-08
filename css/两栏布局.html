@@ -9,12 +9,18 @@
 </head>
 
 <body>
-  <div class="left"></div>
-  <div class="right"></div>
+  <div class="father">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+
 </body>
-<style>
+<style >
+  *{
+    margin: 0;
+  }
   /* 浮动方法 */
-  .left {
+  /* .left {
     float: left;
     width: 200px;
     height: 200px;
@@ -25,7 +31,7 @@
     height: 200px;
     margin-left: 210px;
     background-color: #666;
-  }
+  } */
 
   /* 定位 */
   .left {
@@ -39,12 +45,12 @@
 
   .right {
     height: 200px;
-    margin-left: 210px;
+    margin: 0 210px;
     background-color: #666;
   }
 
   /* flex布局 */
-  body {
+  /* body {
     display: flex;
   }
 
@@ -58,7 +64,25 @@
     flex: 1;
     margin-left: 20px;
     background-color: #666;
+  } */
+
+  /* grid布局 */
+  /* 左边栏设为70%，右边栏设为30%。 */
+  /* .father {
+    display: grid;
+    grid-template-columns: 70% 30%;
+
   }
+
+  .left {
+    height: 200px;
+    background-color: #f0f;
+  }
+
+  .right {
+    height: 200px;
+    background-color: #666;
+  } */
 </style>
 
 </html>

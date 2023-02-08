@@ -7,7 +7,7 @@
 // 2.call和apply都可以传参数。call后面的参数与fn方法中是一一对应的，
 // 而apply的第二个参数是一个数组，数组中的元素是和fn方法中一一对应的，这就是两者最大的区别。
 
-// 3.bind是ES5中的方法，可以向call一样传参，也可以在调用的时候再进行传参。
+// 3.bind是ES5中的方法，可以像call一样传参，也可以在调用的时候再进行传参。
 
 // 原理：就是利用 “点”定THIS机制，context.xxx=self “obj.xxx=func” => obj.xxx()
 // apply和call实现类似，不同的就是参数的处理
@@ -15,22 +15,6 @@
 // 只是在执行函数时，要判断一下，使用者有没有传入第二个参数，如果有的话，执行时传入...arguments[1]就可以。
 // 如果没有传入，在执行时就不传入任何东西。
 // call方法的第二个参数开始依次传入的。而apply是将多余的函数参数放在一个数组里，从第二个参数中统一传入。
-Function.prototype.call = function call(context, ...params) {
-    // this/self->func  context->obj  params->[10,20]
-    let self = this,
-        key = Symbol('KEY'),
-        result;
-    // context为undefined或null的时候，那么会转变为window
-    (context == null || typeof context === "undefined") ? context = window : null;
-
-    // 判断context是否为 对象 或 函数
-    !/^(object|function)$/i.test(typeof context) ? context = Object(context) : null;
-
-    context[key] = self;
-    result = context[key](...params);
-    delete context[key];
-    return result;
-};
 Function.prototype.myCall = function (ctx) {
     ctx = ctx || window;
     let key = Symbol();
@@ -53,28 +37,6 @@ Function.prototype.myApply = function (ctx) {
     delete ctx[key];
     return result;
 };
-Function.prototype.myBind = function (ctx) {
-    ctx = ctx || window;
-    let self = this;
-    let args = [...arguments].splice(1);
-    let fn = function () { };
-    let _fn = function () {
-        return self.apply(this instanceof _fn ? this : ctx, args);
-    }
-    fn.prototype = this.prototype;
-    _fn.prototype = new fn();
-    return _fn;
-}
-
-// func函数基于__proto__找到Function.prototype.call，把call方法执行
-//   在call方法内部「call执行的时候」  call(context->obj,...params->[10,20])
-//     + 把func中的this改为obj
-//     + 并且把params接收的值当做实参传递给func函数
-//     + 并且让func函数立即执行
-// func.call(obj, 10, 20);
-// func.apply(obj, [10, 20]);
-
-
 //   在bind方法内部
 //     和call/apply的区别：并没有把func立即执行
 //     把传递进来的obj/10/20等信息存储起来「闭包」
@@ -87,3 +49,25 @@ Function.prototype.bind = function bind(context, ...params) {
         self.apply(context, params.concat(args));
     };
 };
+// Function.prototype.myBind = function (ctx) {
+//     ctx = ctx || window;
+//     let self = this;
+//     let args = [...arguments].splice(1);
+//     let fn = function () { };
+//     let _fn = function () {
+//         return self.apply(this instanceof _fn ? this : ctx, args);
+//     }
+//     fn.prototype = this.prototype;
+//     _fn.prototype = new fn();
+//     return _fn;
+// }
+
+// func函数基于__proto__找到Function.prototype.call，把call方法执行
+//   在call方法内部「call执行的时候」  call(context->obj,...params->[10,20])
+//     + 把func中的this改为obj
+//     + 并且把params接收的值当做实参传递给func函数
+//     + 并且让func函数立即执行
+// func.call(obj, 10, 20);
+// func.apply(obj, [10, 20]);
+
+

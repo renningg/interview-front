@@ -25,3 +25,5 @@ const throttle = (fn, delay) => {
 const test = debounce(() => {
     console.log("我是防抖")
 }, 2000)
+
+
