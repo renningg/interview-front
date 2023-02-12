@@ -1,0 +1,208 @@
+<div class="">
+  <div class="navdivClass">
+    <div class="titleClass">访客申请</div>
+    <!-- <div class="leftbackdivClass" @click="goBack">
+        <image class="imagebackClass" src="../../../../static/common/zuofanhuinew.png" mode=""></image>
+      </div> -->
+  </div>
+  <div class="navblankdivClass" :style="{'height':navheight}">
+    <!-- 占位 -->
+  </div>
+  <div class="box">
+    <div class="middle-second">
+      <div class="content-item-second">
+        <div style="display: flex;">
+          <div class="" style="color: red;">
+            *
+          </div>
+          <div class="">
+            来访人员：
+          </div>
+        </div>
+        <div class="">
+          <input type="text" placeholder="请输入来访人员姓名" value="" id="input1">
+          <!-- <u--input placeholder="请输入来访人员姓名" v-model="nameValue"></u--input> -->
+        </div>
+      </div>
+      <div class="content-item-second">
+        <div class="">
+          来访人数：
+        </div>
+        <div class="">
+          <input type="number" placeholder="请输入来访人数" value="" id="input2">
+          <!-- <u--input disabled placeholder="请输入来访人数" v-model="personCount"></u--input> -->
+        </div>
+      </div>
+      <div class="content-item-second">
+        <div style="display: flex;">
+          <div class="" style="color: red;">
+            *
+          </div>
+          <div class="">
+            项目人员手机号：
+          </div>
+        </div>
+        <div class="">
+          <input class="inputClass" type="number" placeholder="请输入手机号" value="" id="input3">
+          <!-- <u--input placeholder="请输入手机号" v-model="phoneNumber1"></u--input> -->
+        </div>
+      </div>
+      <div class="content-item-second">
+        <div class="">
+          联系电话：
+        </div>
+        <div class="">
+          <input type="number" placeholder="请输入手机号" value="" id="input4">
+          <!-- <u--input placeholder="请输入联系电话" v-model="phoneNumber2">
+            </u--input> -->
+        </div>
+      </div>
+      <div class="content-item-second">
+        <div class="">
+          来访时间：
+        </div>
+        <div class="">
+          <input type="date" placeholder="请输入来访时间" value="" onchange="changeDate(event)" id="input5">
+          <!-- <u--input placeholder="请输入来访时间" v-model="visitTime" @focus="changeVisitTime">
+            </u--input> -->
+        </div>
+      </div>
+      <div class="bottom-button">
+        <div class="reset-button" onclick="reset()">
+          重置
+        </div>
+        <div class="save-button" onclick="save()">
+          保存
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+  var timeStamp = ""
+  function changeDate(e) {
+    console.log(e);
+    timeStamp = e.timeStamp
+  }
+  function reset() {
+    console.log(111);
+    document.getElementById("input1").value = ""
+    document.getElementById("input2").value = ""
+    document.getElementById("input3").value = ""
+    document.getElementById("input4").value = ""
+    document.getElementById("input5").value = ""
+  }
+  function save() {
+    let params = {
+      "visit_time": timeStamp, //来访时间
+      "visitor": document.getElementById("input1").value, //来访人员
+      "renshu": document.getElementById("input2").value, //来访人数
+      "phone": document.getElementById("input3").value, //联系电话
+      "project_phone": document.getElementById("input4").value, //项目人员手机号
+      "status": 0 //未授权 新增时传固定值0
+    }
+    console.log(params);
+    let xhr = new XMLHttpRequest()
+    xhr.open('POST', 'http://42.248.76.124:8091/openapi/v2/visitor/apply')
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+    xhr.send(params)
+    xhr.onreadystatechange = function () {
+      //onreadystatechange会触发多次，一般需要判断xhr.readState == 4 才获取响应数据
+      if (xhr.readyState == 4) {
+        alert("保存成功")
+      }else if( xhr.status != 200) {
+        alert("保存失败")
+      }
+    }
+  }
+
+</script>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .navdivClass {
+    background-color: #1D5DBF;
+    height: 100px;
+  }
+
+  .titleClass {
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    align-items: center;
+    line-height: 100px;
+  }
+
+  .box {
+    height: 800px;
+    margin-top: 30px;
+    font-size: 36px;
+  }
+
+  .middle-second {
+    margin-left: 50px;
+    margin-top: 50px;
+    width: calc(100% - 100px);
+    height: 600px;
+
+  }
+
+  .content-item-second {
+    margin-top: 20px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    line-height: 100px;
+    align-items: center;
+    width: calc(100% - 100px);
+  }
+
+  input {
+    /* height: 50px; */
+    font-size: 36px;
+    border: 1px solid #423a3a;
+  }
+
+  input::placeholder {
+
+    font-size: 36px;
+  }
+
+  .bottom-button {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+
+
+  }
+
+  .reset-button {
+    border-radius: 16px;
+    color: #1D5DBF;
+    border: 1px solid #1D5DBF;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .save-button {
+    border-radius: 16px;
+    color: white;
+    background-color: #1D5DBF;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    align-items: center;
+    text-align: center;
+  }
+</style>
