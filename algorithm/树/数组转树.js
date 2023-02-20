@@ -59,7 +59,6 @@ const data = [
     { id: '15', name: '小涛', pid: '06', job: '运维工程师' }
 ]
 
-
 function arrToTree(data) {
     let tree = []
     // if (!Array.isArray(data)) {
@@ -74,9 +73,9 @@ function arrToTree(data) {
     data.forEach(item => {
         let parent = map[item.pid]
         // 修改对象的属性
-        delete item.pid
+        // delete item.pid
         item['label'] = item.name
-        delete item.name
+        // delete item.name
         if (parent) {
             (parent.children || (parent.children = [])).push(item)
         } else {

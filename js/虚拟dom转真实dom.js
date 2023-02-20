@@ -1,4 +1,14 @@
 // 真正的渲染函数
+// 一个虚拟节点，包括标签tag，属性attrs，子节点children
+let vnode = {
+    tag:"div",
+    attrs:{
+        style:"color:red"
+    },
+    children:[{
+
+    }]
+}
 function _render(vnode) {
     // 如果是数字类型, 转化为字符串
     if (typeof vnode === "number") {
@@ -21,4 +31,3 @@ function _render(vnode) {
     vnode.children.forEach((child) => dom.appendChild(_render(child)));
     return dom;
 }
-

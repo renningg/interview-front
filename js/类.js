@@ -15,13 +15,19 @@
 // 对象名.方法名([参数]);
 
 
-// 举例如下
-//ES6里的定义
-class Person { //使用class关键字定义类
-    constructor(name, age) { //构造方法：用来初始化对象的成员
+//ES6里的定义。使用class关键字定义类
+class Person { 
+    //构造方法：用来初始化对象的成员
+    constructor(name, age) { 
         this.name = name;
         this.age = age;
     }
+    // 私有方法。凡是通过 = 来定义的，均为私有属性/私有方法
+    // 想添加公共属性，只能通过 Parson.prototype.xx = xx 来添加
+    study = function(){
+
+    }
+    // 公共方法，不可枚举
     study() {
         console.log(this.name + "在学习"); //成员方法（对象的行为）
     }

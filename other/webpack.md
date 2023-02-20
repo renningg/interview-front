@@ -1,5 +1,17 @@
 https://blog.csdn.net/snsHL9db69ccu1aIKl9r/article/details/119192986?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166933967316800192214726%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166933967316800192214726&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-119192986-null-null.142^v66^pc_rank_34_queryrelevant25,201^v3^control_2,213^v2^t3_esquery_v3&utm_term=webpack%E9%9D%A2%E8%AF%95%E9%A2%98&spm=1018.2226.3001.4187
 
+# webpack打包优化
+  1. 优化搜索文件：
+    (1) 缩小文件的搜索范围。合理使用resolve功能。如配置resolve.alias，配置src的路径
+    (2)对匹配的文件进行分析，转化：使用module.noParse，告诉webpack不必解析哪些文件，可以用来排除对非模块化库文件的解析
+  2. 使用HappyPack开启多进程loader转换：Loader对文件的转换操作太耗时，JS是单线程模型，只能一个一个文件处理，通过HappyPack将任务分解为多个子进程，最后将结果发给主进程，并行处理。
+  3. 使用ParalleUglifyPlugin开启多进程压缩JS文件
+  4. 开启模块热替换 HMR：只重新编译变化的模块
+  5. 压缩资源(JS,CSS,图片)
+  6. 开启Tree-Shaking
+  7. 配置PublicPath
+  8. 区分不同的开发环境/生产环境
+  
 1、webpack的作用是什么，谈谈你对它的理解？
 现在的前端网页功能丰富，特别是SPA（single page web application 单页应用）技术流行后，
 JavaScript的复杂度增加和需要一大堆依赖包，还需要解决Scss，Less……新增样式的扩展写法的编译工作。
@@ -53,40 +65,6 @@ webpack会自动地递归解析入口所需要加载的所有资源文件，然�
 7、webpack是解决什么问题而生的?
 如果像以前开发时一个html文件可能会引用十几个js文件,而且顺序还不能乱，因为它们存在依赖关系，同时对于ES6+等新的语法，less, sass等CSS预处理都不能很好的解决……，此时就需要一个处理这些问题的工具。
 
-8、你是如何提高webpack构件速度的?
-多入口情况下，使用CommonsChunkPlugin来提取公共代码
-
-通过externals配置来提取常用库
-
-利用DllPlugin和DllReferencePlugin预编译资源模块通过DllPlugin来对那些我们
-
-引用但是绝对不会修改的npm包来进行预编译，再通过DllReferencePlugin将预编译的模块加载进来。
-
-使用Happypack 实现多线程加速编译
-
-使用webpack-uglify-paralle来提升uglifyPlugin的压缩速度。
-
-原理上webpack-uglify-parallel采用了多核并行压缩来提升压缩速度
-使用Tree-shaking和Scope Hoisting来剔除多余代码
-
-9、npm打包时需要注意哪些？如何利用webpack来更好的构建？
-Npm是目前最大的 JavaScript 模块仓库，里面有来自全世界开发者上传的可复用模块。
-
-你可能只是JS模块的使用者，但是有些情况你也会去选择上传自己开发的模块。 
-
-关于NPM模块上传的方法可以去官网上进行学习，这里只讲解如何利用webpack来构建。
-
-NPM模块需要注意以下问题：
-
-要支持CommonJS模块化规范，所以要求打包后的最后结果也遵守该规则。
-
-Npm模块使用者的环境是不确定的，很有可能并不支持ES6，所以打包的最后结果应该是采用ES5编写的。并且如果ES5是经过转换的，请最好连同SourceMap一同上传。
-
-Npm包大小应该是尽量小（有些仓库会限制包大小）
-
-发布的模块不能将依赖的模块也一同打包，应该让用户选择性的去自行安装。这样可以避免模块应用者再次打包时出现底层模块被重复打包的情况。
-
-UI组件类的模块应该将依赖的其它资源文件，例如.css文件也需要包含在发布的模块里。
 
 10、前端为什么要进行打包和构建？
 代码层面：

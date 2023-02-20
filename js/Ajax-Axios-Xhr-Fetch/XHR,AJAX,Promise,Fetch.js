@@ -1,6 +1,21 @@
 // 一，XMLHTTPRequest：XMLHTTPRequest是浏览器的一个接口。使得JS能够进行HTTP(S)通信。
 //      自从有了XMLHTTPRequest，AJAX就诞生了
 // 如何使用？① 创建 XMLHTTPRequest 对象；② 发送请求；③ 接受服务器传回的数据；④ 更新网页数据
+function save() {
+  let params = {}
+  let xhr = new XMLHttpRequest()
+  xhr.open('POST', 'http://42.248.76.124:8091/openapi/v2/visitor/apply')
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+  xhr.send(params)
+  xhr.onreadystatechange = function () {
+    //onreadystatechange会触发多次，一般需要判断xhr.readState == 4 才获取响应数据
+    if (xhr.readyState == 4) {
+      alert("保存成功")
+    } else if (xhr.status != 200) {
+      alert("保存失败")
+    }
+  }
+}
 
 // 二，AJAX：Asynchronous JavaScript and XML ,翻译为：异步的JavaScript和XML，是一种用于创建
 //    动态网页X技术，脚本独立向服务器请求数据，拿到数据，进行网页的局部更新的技术。

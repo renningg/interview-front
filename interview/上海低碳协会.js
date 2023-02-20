@@ -20,7 +20,7 @@ function query(str) {
     }
     Object.keys(res).forEach(item => {
         console.log("字符" + item + "出现的次数是", res[item])
-        if(res[item] == max) console.log("出现次数最多的是" + item, "出现次数是" + max);
+        if (res[item] == max) console.log("出现次数最多的是" + item, "出现次数是" + max);
     })
 }
 // query(str)
@@ -46,12 +46,12 @@ let dog = {
 
 var obj = {
     name: 'obj',
-    fun: ()=>console.log(this)
+    fun: () => console.log(this)
 }
 
-obj.fun(); //输出 {name: "obj", fun: ƒ}
+// obj.fun(); //输出 {name: "obj", fun: ƒ}
 
-// console.log(dog.getBreed(), dog.getSound());
+console.log(dog.getBreed(), dog.getSound());
 // const obj = {
 
 //     name: '张三',
@@ -109,16 +109,16 @@ obj.fun(); //输出 {name: "obj", fun: ƒ}
 // console.log(obj.fun2());
 
 
-var name = 'win'
-const obj = {
-name: "obj",
-a:() =>{
-console.log(this.name)
-}
-}
-const obj1 = {
-name: "obj1"
-}
-obj.a.call(obj1)
+// var name = 'win'
+// const obj = {
+//     name: "obj",
+//     a: () => {
+//         console.log(this.name)
+//     }
+// }
+// const obj1 = {
+//     name: "obj1"
+// }
+// obj.a.call(obj1)
 
 

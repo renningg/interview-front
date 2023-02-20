@@ -40,6 +40,19 @@ function shallowCopy(item) {
     }
     return item
 }
+
+// JSON的parse和stringify方法也可以实现强拷贝
+// 比较简单的深拷贝写法
+function deepClone(item) {
+    if (typeof item != "object" || item == null) return item
+    let result = item.constructor()
+    for (const key in item) {
+        if (item.hasOwnProperty(key)) {
+            result[key] = deepClone(item[key])
+        }
+    }
+    return result
+}
 // 深拷贝
 function deepCopy(item, cache = new Set()) {
     if (checkType == "Object") {

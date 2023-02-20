@@ -25,6 +25,17 @@
  * 
  *      + 迭代器就是一种接口机制，为各种不同的数据结构提供统一访问的机制。(即为了让一些不支持遍历的数据结构可遍历)
  */
+
+/*
+ *  获取对象所有私有属性【私有的，不论是否可枚举，不论类型】
+ *      获取对象非Symbol类型的私有属性：
+ *          Object.getOwnPropertyNames(arr)
+ *      获取Symbol类型的私有属性
+ *          Object.getOwnPropertySymbols(arr)
+ * 
+ *  可以基于ES6中的Reflect.ownKeys()代替上述操作(缺点：不兼容IE)
+ *  let keys = Reflect.ownKeys(arr)
+ */
 let arr = new Array(9999999).fill(0);
 
 // console.time('FOR~~');

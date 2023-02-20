@@ -1,5 +1,3 @@
-<script>
-
 //promise版本的ajax，promise封装ajax
 function pajax(options){
   var q = new Promise(function(resolve,reject){
@@ -10,11 +8,9 @@ function pajax(options){
  
       },error:function(err){
         reject(err)
- 
       }
     })
  
   })
   return q
 }
-</script>

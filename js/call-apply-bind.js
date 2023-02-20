@@ -3,7 +3,6 @@
 
 // 1.call和apply都是对函数的直接调用（也叫直接执行函数），而bind方法返回的仍然是一个函数，
 
-
 // 2.call和apply都可以传参数。call后面的参数与fn方法中是一一对应的，
 // 而apply的第二个参数是一个数组，数组中的元素是和fn方法中一一对应的，这就是两者最大的区别。
 
@@ -49,25 +48,5 @@ Function.prototype.bind = function bind(context, ...params) {
         self.apply(context, params.concat(args));
     };
 };
-// Function.prototype.myBind = function (ctx) {
-//     ctx = ctx || window;
-//     let self = this;
-//     let args = [...arguments].splice(1);
-//     let fn = function () { };
-//     let _fn = function () {
-//         return self.apply(this instanceof _fn ? this : ctx, args);
-//     }
-//     fn.prototype = this.prototype;
-//     _fn.prototype = new fn();
-//     return _fn;
-// }
-
-// func函数基于__proto__找到Function.prototype.call，把call方法执行
-//   在call方法内部「call执行的时候」  call(context->obj,...params->[10,20])
-//     + 把func中的this改为obj
-//     + 并且把params接收的值当做实参传递给func函数
-//     + 并且让func函数立即执行
-// func.call(obj, 10, 20);
-// func.apply(obj, [10, 20]);
 
 
