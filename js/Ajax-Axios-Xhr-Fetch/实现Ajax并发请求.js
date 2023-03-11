@@ -34,10 +34,11 @@ function createRequest(tasks, pool) {
         }
         let old_index = index
         let task = tasks[index++]
-        task().then(res => {
-          results[old_index] = res
-          run();
-        })
+        task()
+          .then(res => {
+            results[old_index] = res
+            run();
+          })
           .catch(err => reject(err))
       }
       // 执行递归函数

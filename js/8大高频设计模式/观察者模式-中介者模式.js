@@ -1,7 +1,7 @@
-/* 
- * Observer [əbˈzɜːrvər]观察者模式
- * Mediator [ˈmiːdieɪtər]中介者模式
- * Publish [ˈpʌblɪʃ] & Subscribe [səbˈskraɪb] 发布/订阅模式
+/**
+ *  Observer [əbˈzɜːrvər]观察者模式：目标与观察员直接通信
+ *  Mediator [ˈmiːdieɪtər]中介者模式：发布者通过中介注册方法，订阅者在某个时刻去执行方法
+ * 
  */
 
 // 观察者模式:vue2.0响应式原理...

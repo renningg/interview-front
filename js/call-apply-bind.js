@@ -23,6 +23,16 @@ Function.prototype.myCall = function (ctx) {
     delete ctx[key];
     return result;
 };
+
+const call = function(ctx){
+    let ctx = ctx || window;
+    let key = Symbol()
+    ctx[key] = this;
+    let params = [...arguments][1]
+    let result = ctx[key](...params)
+    return result
+}
+
 Function.prototype.myApply = function (ctx) {
     ctx = ctx || window;
     let key = Symbol();
@@ -39,14 +49,17 @@ Function.prototype.myApply = function (ctx) {
 //   在bind方法内部
 //     和call/apply的区别：并没有把func立即执行
 //     把传递进来的obj/10/20等信息存储起来「闭包」
-//     执行bind返回一个新的函数 例如:proxy，把proxy绑定给元素的事件，当事件触发执行的是返回的proxy，在proxy内部，再去把func执行，把this和值都改变为之前存储的那些内容
+//     执行bind返回一个新的函数 例如:proxy，把proxy绑定给元素的事件，
+//     当事件触发执行的是返回的proxy，在proxy内部，再去把func执行，
+//     把this和值都改变为之前存储的那些内容
 Function.prototype.bind = function bind(context, ...params) {
     // this/self->func  context->obj  params->[10,20]
     let self = this;
-    return function proxy(...args) {
+    return function proxy(...args) { 
         // 把func执行并且改变this即可  args->是执行proxy的时候可能传递的值
         self.apply(context, params.concat(args));
     };
 };
+
 
 

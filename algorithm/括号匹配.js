@@ -20,5 +20,4 @@ function isValid(str) {
   return left.length == 0
 }
 
-console.log(fn("()]"));
 

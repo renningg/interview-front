@@ -1,0 +1,87 @@
+<!-- 在图片没有进入可视区域时，先给的src一个默认加载的图片，
+这样浏览器就不会发送请求了，等到图片进入可视区域再把真实的图片路径data-src给src。 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  .imgList {
+    width: 600px;
+  }
+
+  .lazy {
+    width: 600px;
+  }
+</style>
+
+<body>
+  <div class="imgList">
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/1.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/2.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/3.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/4.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/5.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/6.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/7.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/8.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/9.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/10.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/11.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/1.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/2.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/3.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/4.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/5.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/6.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/7.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/8.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/9.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/10.jpeg" />
+    <img class="lazy" src="/image/loading.jpg" data-src="/image/11.jpeg" />
+  </div>
+</body>
+
+<script>
+  window.onload = function () {
+    //onload：等所有资源文件加载完毕以后执行
+    let imgs = document.querySelectorAll('.lazy')
+    function lazyload() {
+      // 可视区域的高度
+      let viewHeight = document.documentElement.clientHeight;
+      // 滚动条滚出去的高度
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      for (let i = 0; i < imgs.length; i++) {
+        //  图片距离文档顶部的距离<滚动条故出去的高度+可视区域的高度
+        // （即需要加载的图面滚到可视区域了，就要进行懒加载了）
+        if (imgs[i].offsetTop < viewHeight + scrollTop) {
+          imgs[i].src = imgs[i].getAttribute('data-src')
+        }
+      }
+    }
+    lazyload();//页面一进来时加载
+    //最好给滚动加一个节流函数
+    function thorttle(fn, wait) {
+      let timer = null
+      return function () {
+        if (!timer) {
+          timer = setTimeout(() => {
+            fn.call(this)
+            timer = null
+          }, wait)
+        }
+      }
+    }
+    // 页面滚动时
+    window.onscroll = thorttle(lazyload, 500)
+  }
+</script>
+
+
+</html>

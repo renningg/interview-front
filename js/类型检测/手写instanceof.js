@@ -1,5 +1,5 @@
 function myInstanceOf(item, fun) {
-  if (typeof item !== "object" && typeof item !== "function" && item !== null) return false
+  if (typeof item !== "object" && typeof item !== "function" && item == null) return false
   let prototype = fun.prototype
   let proto = item.__proto__
   while (prototype !== proto) {
@@ -9,6 +9,4 @@ function myInstanceOf(item, fun) {
   return true
 }
 
-
-// console.log(myInstanceOf([], Array));
 

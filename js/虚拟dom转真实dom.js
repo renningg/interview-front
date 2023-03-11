@@ -31,3 +31,4 @@ function _render(vnode) {
     vnode.children.forEach((child) => dom.appendChild(_render(child)));
     return dom;
 }
+

@@ -18,8 +18,11 @@ function myNew() {
 }
 
 function myNew(fn) {
+    // 创建一个新对象，且把构造函数的prototype赋值给新对象的prototype
     const obj = Object.create(fn.prototype);
+    // 更改 this 指向，把构造函数的 this 赋值给 新对象，且给新对象添加属性
     result = fn.apply(obj, [...arguments].slice(1));
+    // 判断构造函数如果返回非空对象，则返回该对象，否则返回新对象obj
     return typeof result === "object" ? result : obj;
 }
 

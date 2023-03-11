@@ -21,9 +21,4 @@ const throttle = (fn, delay) => {
         lastTime = nowTime;
     }
 }
-// 测试
-const test = debounce(() => {
-    console.log("我是防抖")
-}, 2000)
-
 

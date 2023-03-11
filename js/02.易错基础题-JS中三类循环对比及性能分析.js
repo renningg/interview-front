@@ -10,21 +10,79 @@
  *      Q2:问题很多：不能迭代Symbol属性、迭代顺序会以数字属性优先、公有可枚举的{一般是自定义属性}属性也会进行迭代
  *   + for of循环的底层机制
  *      Q1:迭代器iterator规范「具备next方法，每次执行返回一个对象，具备 value/done 属性」
- *      Q2:让对象具备可迭代性并且使用for of循环
- * 
- *    + for of适用遍历数/数组对象/字符串/map/set等拥有迭代器对象（iterator）的集合，但是不能遍历对象，
- *          因为没有迭代器对象，但如果想遍历对象的属性，你可以用for in循环（这也是它的本职工作）
- *          或用内建的Object.keys()方法
- *      const obj = { name: '11', test: '22' }
-        const test = function name(params) {
-        Object.keys(obj).map(key => {
-        console.log(key, obj[key]);
-        });
+ *      Q2:让对象具备可迭代性并且使用for of循环***/
+
+// forEach没有返回值；map 和 fliter 都有返回值
+// 重写 forEach
+function forEach(cb) {
+    let self = this;
+    for (let i = 0; i < self.length; i++) {
+        cb(self[i], i, self)
+    }
+}
+// 重写 map
+function myMap(cb) {
+    let newArr = []
+    for (let i = 0; i < this.length; i++) {
+        newArr.push(cb(this[i], i, this))
+    }
+    return newArr
+}
+
+// 重写 fliter
+function myFliter() {
+    let newArr = []
+    for (let i = 0; i < this.length; i++) {
+        // 回调函数返回 true 才会被添加到新数组
+        (cb(this[i], i, this)) && newArr.push(this[i])
+    }
+    return newArr;
+}
+
+// 给对象添加接口机制
+const obj = {
+    max: 5,
+    current: 0,
+    [Symbol.iterator]() {
+        return {
+            max: this.max,
+            current: this.current,
+            next() {
+                if (this.current == this.max) {
+                    return {
+                        value: undefined,
+                        done: true
+                    }
+                } else {
+                    return {
+                        value: this.current++,
+                        done: false
+                    }
+                }
+            }
         }
-        test(); 
- * 
- *      + 迭代器就是一种接口机制，为各种不同的数据结构提供统一访问的机制。(即为了让一些不支持遍历的数据结构可遍历)
- */
+    }
+}
+console.log([...obj])
+
+for (let val of obj) {
+    console.log(val);
+
+}
+/* 
+*    + for of适用遍历数/数组对象/字符串/map/set等拥有迭代器对象（iterator）的集合，但是不能遍历对象，
+*          因为没有迭代器对象，但如果想遍历对象的属性，你可以用for in循环（这也是它的本职工作）
+*          或用内建的Object.keys()方法
+*      const obj = { name: '11', test: '22' }
+       const test = function name(params) {
+       Object.keys(obj).map(key => {
+       console.log(key, obj[key]);
+       });
+       }
+       test(); 
+* 
+*      + 迭代器就是一种接口机制，为各种不同的数据结构提供统一访问的机制。(即为了让一些不支持遍历的数据结构可遍历)
+*/
 
 /*
  *  获取对象所有私有属性【私有的，不论是否可枚举，不论类型】

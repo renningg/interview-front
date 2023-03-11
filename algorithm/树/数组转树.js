@@ -85,5 +85,4 @@ function arrToTree(data) {
     return tree
 }
 
-const tree = arrToTree(data)
-console.log(tree)
+

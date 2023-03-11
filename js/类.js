@@ -18,13 +18,13 @@
 //ES6里的定义。使用class关键字定义类
 class Person { 
     //构造方法：用来初始化对象的成员
+    // 想添加公共属性，只能通过 Parson.prototype.xx = xx 来添加
     constructor(name, age) { 
         this.name = name;
         this.age = age;
     }
     // 私有方法。凡是通过 = 来定义的，均为私有属性/私有方法
-    // 想添加公共属性，只能通过 Parson.prototype.xx = xx 来添加
-    study = function(){
+    say = function(){
 
     }
     // 公共方法，不可枚举
