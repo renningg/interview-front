@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="father">
+    <div class="q1"></div>
+    <div class="q2"></div>
+    <div class="q3"></div>
+  </div>
+  <style>
+    /* 
+      flex:1
+        flex-grow: 1;增大占比
+        flex-shrink: 1;缩小比例
+        flex-basis: 0%;设置盒子的基准宽度，会把 width 干掉
+    */
+
+    /* 
+      如果给其他元素设置 flex-grow:1或者2，3
+      就是等比例占据剩余空间
+    */
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .father {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .q1 {
+      height: 100px;
+      background-color: yellowgreen;
+    }
+
+    .q2 {
+      flex: 1;
+      background-color: violet;
+    }
+
+    .q3 {
+      height: 100px;
+      background-color: aqua;
+    }
+  </style>
+</body>
+
+</html>

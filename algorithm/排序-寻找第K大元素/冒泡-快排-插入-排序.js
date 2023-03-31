@@ -17,6 +17,7 @@ function bubble(arr) {
 function quickSort(arr) {
   if (arr.length <= 1) return arr;
   var mid = Math.floor(arr.length / 2);
+  // 通过[0]拿到中间那数值
   var pivot = arr.splice(mid, 1)[0];
   var left = [], right = [];
   for (var i = 0; i < arr.length; i++) {
@@ -34,15 +35,44 @@ function quickSort(arr) {
 function insertSort(arr) {
   for (var i = 1; i < arr.length; i++) {
     var temp = arr[i];
-    var j = i - 1;//默认已排序的元素
-    while (j >= 0 && arr[j] > temp) {  //在已排序好的队列中从后向前扫描
-      arr[j + 1] = arr[j]; //已排序的元素大于新元素，将该元素移到一下个位置
+    //默认已排序的元素
+    var j = i - 1;
+    //在已排序好的队列中从后向前扫描
+    while (j >= 0 && arr[j] > temp) {
+      //已排序的元素大于新元素，将该元素移到一下个位置
+      arr[j + 1] = arr[j];
       j--;
     }
     arr[j + 1] = temp;
   }
   return arr
 }
+
+// 归并排序 时间复杂度O(nlogn)，空间复杂度 O(n)
+function mergeSort(list) {
+  const rec = arr => {
+    if (arr.length === 1) return arr
+    const mid = Math.floor(arr.length / 2)
+    const left = arr.slice(0, mid)
+    const right = arr.slice(mid)
+    const arr1 = rec(left)
+    const arr2 = rec(right)
+    let i = 0, j = 0
+    let res = []
+    while (i < arr1.length && j < arr2.length) {
+      if (arr1[i] < arr2[j]) {
+        res.push(arr1[i++])
+      } else {
+        res.push(arr2[j++])
+      }
+    }
+    if (i < arr1.length) res = res.concat(arr1.slice(i))
+    if (j < arr2.length) res = res.concat(arr2.slice(j))
+    return res
+  }
+  return rec(list)
+}
+
 console.log(bubble([1, 5, 0, 2, 5, 6]));
 console.log(quickSort([1, 5, 0, 2, 5, 6]));
 console.log(insertSort([1, 5, 2, 0, 1, 5]));

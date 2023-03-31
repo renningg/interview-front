@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="box"></div>
+  <script>
+    // 拿到html元素
+    const htmlDom = document.documentElement
+    // 改变的函数
+    function serRemFontSize() {
+      // 拿到屏幕的宽度
+      const htmlWidth = htmlDom.clientWidth
+      // 计算fontsize的大小  
+      const htmlFontSize = htmlWidth / 19.2
+      console.log(htmlFontSize);
+      // fontsize赋值到html上
+      htmlDom.style.fontSize = htmlFontSize + 'px'
+      console.log(htmlWidth);
+    }
+    // 第一次进来时主动调用一下
+    serRemFontSize()
+    // 实时监听屏幕尺寸改变的函数
+    window.addEventListener('resize', serRemFontSize)
+    // 监听页面跳转(前进或者后退),重新设置一下
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) {
+        serRemFontSize()
+      }
+    })
+  </script>
+</body>
+<style>
+  .box {
+    width: 5rem;
+    height: 5rem;
+    background-color: skyblue;
+  }
+</style>
+</html>

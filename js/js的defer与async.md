@@ -26,6 +26,9 @@ DOMContentLoaded 事件和 script 脚本无相关性，无法确定他们的先�
 # 不同点
   -- (1)  从表现形式上来说，async 的优先级比 defer 高，
             也就是如果同时存在这 2 个属性，那么浏览器将会以 async 的特性去加载此脚本。
-  -- (2)  async 适用于：独立的第三方脚本。无法判断DOMContentLoaded的执行顺序 
-          defer 属性对模块脚本无效 <script type="module"><script>。适用于：所有外部脚本（通过 src 引用的 script）。会阻塞DOMContentLoaded事件
+  -- (2)  
+          async 适用于：独立的第三方脚本。无法判断DOMContentLoaded的执行顺序 
+
+          defer 属性对模块脚本无效 <script type="module"><script>。
+          适用于：所有外部脚本（通过 src 引用的 script）。会阻塞DOMContentLoaded事件
          

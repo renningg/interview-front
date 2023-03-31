@@ -1,11 +1,11 @@
 // 真正的渲染函数
 // 一个虚拟节点，包括标签tag，属性attrs，子节点children
 let vnode = {
-    tag:"div",
-    attrs:{
-        style:"color:red"
+    tag: "div",
+    attrs: {
+        style: "color:red"
     },
-    children:[{
+    children: [{
 
     }]
 }
@@ -31,4 +31,6 @@ function _render(vnode) {
     vnode.children.forEach((child) => dom.appendChild(_render(child)));
     return dom;
 }
+
+
 

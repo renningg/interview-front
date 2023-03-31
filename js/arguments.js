@@ -23,13 +23,24 @@ function a() {
   }
   b()
 }
-a(123)
+a(123,456,789)
 
-function aa() {
+function aa(ctx, ...args) {
   let bb = () => {
-    console.log(arguments[0],[...arguments]);
+    console.log(arguments);
+    let test = [...arguments].splice(1);
+    console.log(test);
+    console.log( ...args);
   }
   bb()
 }
 
-aa(123)
+aa(123,456,789)
+
+
+// let arr = [1,2,3,4,5,6]
+// arr.splice(1)
+// console.log(arr);
+// let arr1 = [1,2,3,4,5,6]
+// let newArr = arr1.slice(1)
+// console.log(newArr);

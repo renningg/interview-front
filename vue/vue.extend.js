@@ -2,8 +2,8 @@
 
 // 参数是一个包含组件选项的对象。data选项是函数，为了保证引用类型的数据不乱来
 
-// 原理：Vue.extend返回的是一个扩展实例构造器,也就是预设了部分选项的Vue实例构造器，但未曾实例化，
-// 可以理解为创建一个子类，然后让它继承Vue身上的一些功能。
+// 原理：Vue.extend返回的是一个扩展实例构造器,也就是预设了部分选项的Vue实例构造器，
+// 但未曾实例化，可以理解为创建一个子类，然后让它继承Vue身上的一些功能。
 
 // 1，例如，我有一个弹窗组件
 
@@ -162,5 +162,6 @@ mounted() {
     });
 }
 
-// Vue.component()方法实际上调用Vue.extend()创建子类构造方法，并且放入Vue.options.components, 实现全局注册
+// Vue.component()方法实际上调用Vue.extend()创建子类构造方法，
+// 并且放入Vue.options.components, 实现全局注册
 // 而Vue.extend仅仅是创建子类构造方法，不放入Vue.options.components。

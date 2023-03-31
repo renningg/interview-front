@@ -23,20 +23,20 @@ function save() {
 //         (async/await: 使异步操作以同步的方式去执行)
 
 // 三，手写Promise
-  /*****
-   *  Promise有三个状态
-   *    pending：初始状态
-   *    fulfilled：操作成功
-   *    rejected：操作失败
-   * 当Promise的状态发生改变，会触发then()里的响应函数处理后续步骤：
-   *    promise状态已经改变，不会再变
-   *    promise状态改变只有两种可能：
-   *      从pending 变为 fulfilled
-   *      从pending 变为 rejected
-   *    这两种情况只要发生，状态就凝固，不会再变。
-   * 
-   * 
-   */
+/*****
+ *  Promise有三个状态
+ *    pending：初始状态
+ *    fulfilled：操作成功
+ *    rejected：操作失败
+ * 当Promise的状态发生改变，会触发then()里的响应函数处理后续步骤：
+ *    promise状态已经改变，不会再变
+ *    promise状态改变只有两种可能：
+ *      从pending 变为 fulfilled
+ *      从pending 变为 rejected
+ *    这两种情况只要发生，状态就凝固，不会再变。
+ * 
+ * 
+ */
 let p1 = new Promise(resolve => {
   // setTimeout(resolve, 0, 1)//大家猜猜如果是这句，最后是什么结果
   resolve(1);
@@ -81,9 +81,9 @@ let myRace = function (parr) {
       // Promise.resolve(p).then(resolve, reject); //只要是状态改变了就直接走对应的函数
       //也可以是这样
       Promise.resolve(p).then(res => {
-       	resolve(res);
-      },err=>{
-      	reject(err);
+        resolve(res);
+      }, err => {
+        reject(err);
       });
     }
   })
@@ -133,13 +133,13 @@ Promise.myAllSettled = function (parr) {
   })
 }
 
-/*四， Fetch：Fetch是ES6新增的通信方法，不是ajax，
-              但是本身能够实现数据通信，且基于Promise管理
-        缺点：
-            不兼容IE
-            机制的完善度上，还是不如XMLHttpRequest
-           【例如：无法设置超时时间，没有内置的请求中断的处理】
-*/
+  /*四， Fetch：Fetch是ES6新增的通信方法，不是ajax，
+                但是本身能够实现数据通信，且基于Promise管理
+          缺点：
+              不兼容IE
+              机制的完善度上，还是不如XMLHttpRequest
+             【例如：无法设置超时时间，没有内置的请求中断的处理】
+  */
   (async function () {
     let params = {
       method: 'post',
@@ -157,5 +157,6 @@ Promise.myAllSettled = function (parr) {
       })
     console.log(result);
   })();
+
 
 

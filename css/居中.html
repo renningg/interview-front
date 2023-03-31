@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- position:sticky 粘性定位；
+在未超过阈值是 absolute 定位
+超过以后是fixed定位 -->
+
+<body>
+  <div class="parent1">
+    <div class="child1">
+      hello child1
+    </div>
+  </div>
+
+  <div class="parent4">
+    <div class="child4">
+      hello child4
+    </div>
+  </div>
+
+  <div class="parent5">
+    <div class="child5">
+      hello child5
+    </div>
+  </div>
+
+  <div class="parent6">
+    <div class="child5">
+      hello child6
+    </div>
+  </div>
+
+  <div class="parent2">
+    <div class="child2">
+      hello child2
+    </div>
+  </div>
+
+  <div class="parent3">
+    <div class="child3">
+      hello child3
+    </div>
+  </div>
+
+
+</body>
+<style>
+  /* 子元素宽高不知 */
+  .parent1 {
+    display: table;
+    width: 200px;
+    height: 200px;
+    border: 1px solid;
+  }
+
+  .child1 {
+    border: 1px solid;
+    /* 让标签元素以表格单元格的形式呈现，类似于td标签 */
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  /* 子元素宽高不知，已知均可 */
+  .parent4 {
+    width: 200px;
+    height: 200px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .child4 {
+    border: 1px solid;
+  }
+
+  /* 子元素宽高不知，已知均可 */
+  .parent5 {
+    width: 200px;
+    height: 200px;
+    border: 1px solid;
+    position: relative;
+  }
+
+  .child5 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid;
+  }
+
+  /* child5的延伸 */
+  .parent6 {
+    position: relative;
+    /* display: flex;
+        justify-content: center;
+        align-items: center; */
+    width: 200px;
+    height: 200px;
+    border: 1px solid;
+  }
+
+  .child6 {
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  /* 子元素宽高已知 */
+  .parent2 {
+    width: 200px;
+    height: 200px;
+    border: 1px solid;
+  }
+
+  .child2 {
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+    /* 
+        auto不能实现垂直居中 因为块状元素即使设置了宽度
+        也会独占一行，在水平方向上自动扩充
+        非要通过 margin:auto 实现垂直居中，开启定位
+    */
+    margin: auto;
+  }
+
+  /* 子元素宽高已知 */
+  .parent3 {
+    width: 200px;
+    height: 200px;
+    border: 1px solid;
+    position: relative;
+  }
+
+  .child3 {
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+    position: absolute;
+    /* 垂直居中，水平不居中 */
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+</style>
+
+</html>

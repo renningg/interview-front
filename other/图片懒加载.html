@@ -58,7 +58,7 @@
       // 滚动条滚出去的高度
       let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
       for (let i = 0; i < imgs.length; i++) {
-        //  图片距离文档顶部的距离<滚动条故出去的高度+可视区域的高度
+        //  图片距离文档顶部的距离 < 滚动条故出去的高度 + 可视区域的高度
         // （即需要加载的图面滚到可视区域了，就要进行懒加载了）
         if (imgs[i].offsetTop < viewHeight + scrollTop) {
           imgs[i].src = imgs[i].getAttribute('data-src')

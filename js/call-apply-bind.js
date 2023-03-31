@@ -14,35 +14,21 @@
 // 只是在执行函数时，要判断一下，使用者有没有传入第二个参数，如果有的话，执行时传入...arguments[1]就可以。
 // 如果没有传入，在执行时就不传入任何东西。
 // call方法的第二个参数开始依次传入的。而apply是将多余的函数参数放在一个数组里，从第二个参数中统一传入。
-Function.prototype.myCall = function (ctx) {
+Function.prototype.myCall = function (ctx, ...args) {
     ctx = ctx || window;
     let key = Symbol();
     ctx[key] = this;
-    let args = [...arguments].splice(1);
+    // let args = [...arguments].splice(1);
     let result = ctx[key](...args);
     delete ctx[key];
     return result;
 };
 
-const call = function(ctx){
-    let ctx = ctx || window;
-    let key = Symbol()
-    ctx[key] = this;
-    let params = [...arguments][1]
-    let result = ctx[key](...params)
-    return result
-}
-
-Function.prototype.myApply = function (ctx) {
+Function.prototype.myApply = function (ctx, args) {
     ctx = ctx || window;
     let key = Symbol();
     ctx[key] = this;
-    let result;
-    if (arguments[1]) {
-        result = ctx[key](...arguments[1]);
-    } else {
-        result = ctx[key]();
-    }
+    let result = ctx[key](...args);
     delete ctx[key];
     return result;
 };
@@ -55,11 +41,37 @@ Function.prototype.myApply = function (ctx) {
 Function.prototype.bind = function bind(context, ...params) {
     // this/self->func  context->obj  params->[10,20]
     let self = this;
-    return function proxy(...args) { 
+    return function proxy(...args) {
         // 把func执行并且改变this即可  args->是执行proxy的时候可能传递的值
         self.apply(context, params.concat(args));
     };
 };
+
+
+function settled(arr) {
+    let res = [];
+    let count = 0;
+    let len = arr.length;
+    return new Promise((resolve, reject) => {
+        arr.forEach((index, value) => {
+            Promise.resolve(value)
+                .then(res => {
+                    count++;
+                    res[index] = res
+                    if (count == len) {
+                        resolve(res)
+                    }
+                })
+                .catch(err => {
+                    count++;
+                    res[index] = err
+                    if (count == len) {
+                        reject(err)
+                    }
+                })
+        });
+    })
+}
 
 
 

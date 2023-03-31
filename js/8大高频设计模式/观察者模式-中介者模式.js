@@ -48,6 +48,8 @@ class Subject {
     }
 }
 
+
+
 let sub = new Subject;
 sub.add(new Observer);
 sub.add(new Observer);
@@ -86,6 +88,7 @@ let mediator = (function () {
         publish
     };
 })();
+
 
 /* {
    'xxx':[{

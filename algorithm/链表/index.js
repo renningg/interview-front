@@ -5,6 +5,10 @@
  * 解决链表的问题，一般用快慢指针
  *    比如：快指针比慢指针快1步（题目：找到链表的中间节点）
  *          快指针比慢指针快n步（题目：删除倒数第n个节点）
+ * 还有一种情况，通常会新建一个链表：
+ *  let l3 = new ListNode(0)
+ *  let head = l3
+ *  return head.next
  */
 // 定义节点
 class Node {
@@ -102,3 +106,24 @@ class listNode {
     return this.length === 0
   }
 }
+
+// 链表反转
+var reverseList = function (head) {
+  let pre = null
+  let cur = head
+  const test = (pre, curr) => {
+    while (curr) {
+      // 缓存
+      let temp = curr.next
+      // 反转：pre(null) <- cur
+      curr.next = pre
+      // pre 指针继续前进
+      pre = curr
+      // curr 指针继续前进
+      curr = temp
+    }
+    // 返回的 pre 已经是最后一个节点了！！！此时 curr 为 null
+    return pre
+  }
+  return test(pre, cur)
+};
