@@ -11,6 +11,8 @@
  *   + 掌握this的好玩应用：鸭子类型
  */
 
+
+
 // Q1
 /* const fn = function fn() {
     console.log(this);

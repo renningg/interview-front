@@ -398,6 +398,47 @@ var reverseString = function (s) {
   }
   return s;
 };
+var repeatedSubstringPattern = function (s) {
+  let str = ""
+  for (let i = 0; i < s.length / 2; i++) {
+    str += s[i];
+    if (str.repeat(s.length / str.length) == s) return true
+  }
+  return false
+};
+
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {number[][]}
+ */
+let result = []
+let path = []
+var combine = function (n, k) {
+  result = []
+  combineHelper(n, k, 1)
+  return result
+};
+const combineHelper = (n, k, startIndex) => {
+  if (path.length === k) {
+    console.log(path);
+    console.log([...path]);
+    result.push([...path])
+    return
+  }
+  for (let i = startIndex; i <= n - (k - path.length) + 1; ++i) {
+    path.push(i)
+    combineHelper(n, k, i + 1)
+    path.pop()
+  }
+}
+// console.log(combine(4, 2));
+let phone = '13812345678';
+let newPhone = phone.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2');
+// console.log(newPhone); // 输出结果：138****5678
+
+
+// 2. 找出一个数组中的重复项，并以新数组形式返回
 
 
 

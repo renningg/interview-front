@@ -7,6 +7,7 @@
 
 // 发布订阅模式：一方发布，多方订阅
 class eventBus {
+  // 调度中心
   busObjList = {}
   // 发布：(事件名称，参数)
   $emit = function (event, params) {

@@ -30,7 +30,7 @@ function myMap(cb) {
 }
 
 // 重写 fliter
-function myFliter() {
+function myFliter(cb) {
     let newArr = []
     for (let i = 0; i < this.length; i++) {
         // 回调函数返回 true 才会被添加到新数组

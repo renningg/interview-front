@@ -24,6 +24,8 @@ Function.prototype.myCall = function (ctx, ...args) {
     return result;
 };
 
+
+
 Function.prototype.myApply = function (ctx, args) {
     ctx = ctx || window;
     let key = Symbol();
@@ -47,31 +49,6 @@ Function.prototype.bind = function bind(context, ...params) {
     };
 };
 
-
-function settled(arr) {
-    let res = [];
-    let count = 0;
-    let len = arr.length;
-    return new Promise((resolve, reject) => {
-        arr.forEach((index, value) => {
-            Promise.resolve(value)
-                .then(res => {
-                    count++;
-                    res[index] = res
-                    if (count == len) {
-                        resolve(res)
-                    }
-                })
-                .catch(err => {
-                    count++;
-                    res[index] = err
-                    if (count == len) {
-                        reject(err)
-                    }
-                })
-        });
-    })
-}
 
 
 

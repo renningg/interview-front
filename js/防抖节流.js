@@ -13,6 +13,7 @@ const debounce = (fn, delay) => {
 // 节流
 const throttle = (fn, delay) => {
     let lastTime = 0;
+    let nowTime;
     return () => {
         let nowTime = Date.now();
         if (nowTime - lastTime > delay) {
