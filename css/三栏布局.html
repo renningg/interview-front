@@ -10,91 +10,93 @@
 
 <body>
   <div class="left"></div>
+  <!-- right 写中间！！！ -->
   <div class="right"></div>
   <div class="center"></div>
-  <style>
-    /* 浮动 */
-    * {
-      margin: 0;
-    }
 
-    .left,
-    .right {
-      width: 200px;
-      height: 200px;
-      background-color: #f0f;
-
-    }
-
-    .left {
-      float: left;
-    }
-
-    .right {
-      float: right;
-    }
-
-    .center {
-      height: 200px;
-      margin: 0 210px;
-      background-color: #666;
-    }
-
-    /* 定位 */
-    * {
-      margin: 0;
-    }
-
-    .left,
-    .right {
-      position: absolute;
-      top: 0;
-      width: 200px;
-      height: 200px;
-      background-color: #f0f;
-
-    }
-
-    .left {
-      left: 0;
-    }
-
-    .right {
-      right: 0;
-    }
-
-    .center {
-      height: 200px;
-      margin: 0 210px;
-      background-color: #666;
-    }
-
-    /* flex */
-    * {
-      margin: 0;
-    }
-
-    body {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .left,
-    .right {
-      width: 200px;
-      height: 200px;
-      background-color: #f0f;
-
-    }
-
-    .center {
-      flex: 2;
-      height: 200px;
-      margin: 0 10px;
-      background-color: #666;
-    }
-  </style>
 
 </body>
+<style>
+  /* 浮动 */
+  * {
+    margin: 0;
+  }
+
+  .left,
+  .right {
+    width: 200px;
+    height: 200px;
+    background-color: #f0f;
+
+  }
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+
+  .center {
+    height: 200px;
+    margin: 0 210px;
+    background-color: #666;
+  }
+
+  /* 定位 */
+  * {
+    margin: 0;
+  }
+
+  .left,
+  .right {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 200px;
+    background-color: #f0f;
+
+  }
+
+  .left {
+    left: 0;
+  }
+
+  .right {
+    right: 0;
+  }
+
+  .center {
+    height: 200px;
+    margin: 0 210px;
+    background-color: #666;
+  }
+
+  /* flex */
+  * {
+    margin: 0;
+  }
+
+  body {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .left,
+  .right {
+    width: 200px;
+    height: 200px;
+    background-color: #f0f;
+
+  }
+
+  .center {
+    flex: 2;
+    height: 200px;
+    margin: 0 10px;
+    background-color: #666;
+  }
+</style>
 
 </html>

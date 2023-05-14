@@ -55,3 +55,8 @@ createRequest(tasks, 5)
   .catch(err => console.log('失败-->', err))
 
 
+function fn(tasks, pool){
+  
+}
+
+

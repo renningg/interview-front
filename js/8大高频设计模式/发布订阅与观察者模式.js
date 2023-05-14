@@ -19,6 +19,7 @@ class eventBus {
   }
 }
 
+
 // 使用
 const events = new eventBus()
 // 定义

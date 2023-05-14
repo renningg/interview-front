@@ -12,6 +12,40 @@ class Observer {
     }
 }
 
+class Observer{
+    update(){
+
+    }
+}
+
+class ObverList{
+    constructor(){
+        list = []
+    }
+    add(observer){
+        this.list.push(observer)
+        return this
+    }
+    remove(index){
+        this.list.splice(index,1)
+        return this
+    }
+
+}
+
+class Subject{
+    observers = new ObserverList;
+    add(){
+
+    }
+    remove(){
+
+    }
+    notify(){
+
+    }
+}
+
 //目标
 class ObserverList {
     constructor() {

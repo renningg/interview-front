@@ -38,9 +38,9 @@ function aa(ctx, ...args) {
 aa(123,456,789)
 
 
-// let arr = [1,2,3,4,5,6]
-// arr.splice(1)
-// console.log(arr);
+let arr = [1,2,3,4,5,6]
+arr.splice(1)
+console.log(arr);
 // let arr1 = [1,2,3,4,5,6]
 // let newArr = arr1.slice(1)
 // console.log(newArr);

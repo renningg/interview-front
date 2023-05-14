@@ -12,4 +12,9 @@ vuex和 localStorage 区别
 （5）从用途来看，Vuex是用于管理页面内容及组件的状态，而Storage主要是用于存储数据；
 （6）Storage是由浏览器提供的基础设施，而Vuex则是由JavaScript程序库提供的服务。
 
+1. Cookie：在不同浏览器中，每个 cookie 的大小都有限制，一般在 4KB 左右，Safari 除外，它允许单个 cookie 达到 7KB。此外，每个域名下的 cookie 数量也有限制，不同浏览器的具体数量不同，一般在 20 到 50 个之间。
+
+2. sessionStorage：在不同浏览器中，sessionStorage 的大小限制也有所不同。一般来说，非移动设备的浏览器支持的大小为 5MB 到 10MB 之间，而移动设备的浏览器大小限制则更小，一般为 2MB 到 5MB 之间。
+
+3. localStorage：localStorage 的大小限制与 sessionStorage 差不多，每个域名下的 localStorage 数据总量一般为 5MB 到 10MB 左右。但是在 Safari 浏览器中，localStorage 的大小限制是 25MB，是其他浏览器大小限制的两倍。
 
