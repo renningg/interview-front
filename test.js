@@ -439,32 +439,94 @@ let newPhone = phone.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2');
 
 
 // 2. 找出一个数组中的重复项，并以新数组形式返回
-var uniquePathsWithObstacles = function(obstacleGrid) {
+var uniquePathsWithObstacles = function (obstacleGrid) {
   let m = obstacleGrid.length;
   let n = obstacleGrid[0].length;
   let dp = new Array(m).fill().map(item => new Array(n).fill(0))
-  for(let i = 0 ; i < m ; ++i){
-      if(obstacleGrid[i][0] == 0) {
-          dp[i][0] = 1;
-      }else break;
+  for (let i = 0; i < m; ++i) {
+    if (obstacleGrid[i][0] == 0) {
+      dp[i][0] = 1;
+    } else break;
   }
-  for(let j = 0 ; j < n ; ++j){
-      if(obstacleGrid[0][j] == 0){
-          dp[0][j] = 1;
-      }else break;
+  for (let j = 0; j < n; ++j) {
+    if (obstacleGrid[0][j] == 0) {
+      dp[0][j] = 1;
+    } else break;
   }
-  
-  for(let i = 1 ; i < m; ++i){
-      for(let j = 1 ; j < n ; ++j){
-        dp[i][j] = obstacleGrid[i][j] === 1 ? 0 : dp[i - 1][j] + dp[i][j - 1]
-      }
+
+  for (let i = 1; i < m; ++i) {
+    for (let j = 1; j < n; ++j) {
+      dp[i][j] = obstacleGrid[i][j] === 1 ? 0 : dp[i - 1][j] + dp[i][j - 1]
+    }
   }
   console.log(dp);
   return dp[m - 1][n - 1];
 };
 
+var maxProfit = function (prices) {
+  let arr = []
+  for (let i = 0; i < prices.length; i++) {
+    j = i + 1;
+    arr.push(prices[j] - prices[i])
+  }
+  arr = arr.filter(item => item > 0)
+  console.log(arr);
+  return arr.reduce((pre, cur) => pre + cur, 0)
+};
 
+// console.log(maxProfit([7, 1, 5, 3, 6, 4]));
 
+var canJump = function (nums) {
+  nums.forEach((item, index) => {
+    console.log(index + item - (nums.length - 1 - index));
+    if (index + item >= nums.length - 1 - index) return true;
+  })
+  return false;
+};
+// 503. 下一个更大元素 II
 
+// function nextGreaterElements(nums: number[]): number[] {
+//   let newArr:number[] = [...nums,...nums];
+//    let res:number[] = Array(newArr.length).fill(-1);
+//   let stack:number[] = [];
+//   for(let i = 0; i < newArr.length; i++){
+//       while(stack.length && newArr[i] > newArr[stack[stack.length - 1]]){
+//           let index = stack.pop()
+//           res[index] = newArr[i]
+//       }
+//       stack.push(i)
+//   }
+//      return res.slice(0,nums.length);
+//  };
+// console.log(nextGreaterElements([1,2,1]));
 
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var trap = function (height) {
+  let left = [];
+  let right = [];
+  left.push(0);
+  let res = 0;
+  for (let i = 1; i < height.length; i++) {
+    let arr = height.slice(0, i)
+    let val = Math.max(...arr)
+    left.push(val)
+  }
+  for (let i = 1; i < height.length; i++) {
+    let arr = height.slice(i, height.length)
+    let val = Math.max(...arr)
+    right.push(val)
+  }
+  right.push(0)
+  for (let i = 0; i < height.length; i++) {
+    let val = Math.min(left[i], right[i]) - height[i]
+    if (val > 0) {
+      res = res +  val 
+    }
+  }
+  return res;
+};
+console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
 
