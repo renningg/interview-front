@@ -1,3 +1,4 @@
+// 力扣不要声明全局变量！！！！不信就去看77. 组合
 
 /* 快速排序 */
 function quickSort(arr) {
@@ -412,27 +413,7 @@ var repeatedSubstringPattern = function (s) {
  * @param {number} k
  * @return {number[][]}
  */
-let result = []
-let path = []
-var combine = function (n, k) {
-  result = []
-  combineHelper(n, k, 1)
-  return result
-};
-const combineHelper = (n, k, startIndex) => {
-  if (path.length === k) {
-    console.log(path);
-    console.log([...path]);
-    result.push([...path])
-    return
-  }
-  for (let i = startIndex; i <= n - (k - path.length) + 1; ++i) {
-    path.push(i)
-    combineHelper(n, k, i + 1)
-    path.pop()
-  }
-}
-// console.log(combine(4, 2));
+
 let phone = '13812345678';
 let newPhone = phone.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2');
 // console.log(newPhone); // 输出结果：138****5678
@@ -523,10 +504,69 @@ var trap = function (height) {
   for (let i = 0; i < height.length; i++) {
     let val = Math.min(left[i], right[i]) - height[i]
     if (val > 0) {
-      res = res +  val 
+      res = res + val
     }
   }
   return res;
 };
-console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
+// console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
+var eraseOverlapIntervals = function (intervals) {
+  let res = 0;
+  intervals.sort((a, b) => a[0] - b[0]);
+  for (let i = 1; i < intervals.length; i++) {
+    if (intervals[i][0] < intervals[i - 1][1]) {
+      intervals.splice(i, 1);
+      i--;
+      res++;
+    }
+  }
+  return res;
+};
+// console.log(eraseOverlapIntervals([[1, 2], [2, 3], [3, 4], [1, 3]]));
+var partitionLabels = function (s) {
+  let res = [];
+  let map = new Map();
+  let flag = 0;
+  for (let i = 0; i < s.length; i++) {
+    map.set(s[i], i)
+  }
+  for (let i = 0; i < s.length; i++) {
+    let key = map.get(s[i]);
+    flag = Math.max(flag, key)
+    if (i === flag) {
+      res.push(i);
+    }
+  }
+  if (res.length === 0) res.push(s.length);
+  return res;
+};
 
+// console.log(partitionLabels("eccbbbbdec"));
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {number[][]}
+ */
+let result = []
+let temp = []
+var combine = function (n, k) {
+  backTracking(n, k, 1)
+  return result
+};
+
+const backTracking = (n, k, startIndex) => {
+  if (temp.length === k) {
+    result.push([...temp])
+    return;
+  }
+  for (let i = startIndex; i <= n; i++) {
+    temp.push(i)
+    backTracking(n, k, i + 1);
+    temp.pop();
+  }
+}
+
+// console.log(combine(3,2));
+
+// 数组去重
+Array.from(new Set(arr.map(JSON.stringify)), JSON.parse);
