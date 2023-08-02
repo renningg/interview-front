@@ -569,4 +569,11 @@ const backTracking = (n, k, startIndex) => {
 // console.log(combine(3,2));
 
 // 数组去重
-Array.from(new Set(arr.map(JSON.stringify)), JSON.parse);
+// Array.from(new Set(arr.map(JSON.stringify)), JSON.parse);
+
+console.log(
+  [ [ 3 ], [ 9, 20 ], [ 15, 7 ] ].map(item =>{
+    let length = item.length;
+    return item.reduce((pre,cur) => pre + cur) / length
+  })
+);
