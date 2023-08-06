@@ -8,9 +8,8 @@
     const o2 = Object.create();
     const obj = {'a': '1'}
     Map:
-    const o = new Object(); // 构造方法
-    const o2 = Object.create();
-    const obj = {'a': '1'}
+    const o = new Map(); // 构造方法
+
 
   2. 健的类型：
     Object的健只能是 string, Symbol, 如果非 String, 会进行数据类型转换

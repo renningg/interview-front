@@ -16,30 +16,6 @@ function checkType(item) {
     }
     return obj[Object.prototype.toString.call(item)]
 }
-// 浅拷贝
-function shallowCopy(item) {
-    let ctor = item.constructor
-    if (checkType(item) == "BigInt" || checkType(item) == "Symbol") return new Object(item)
-    if (checkType(item) == "Date" || checkType(item) == "RegExp") return new ctor(item)
-    if (checkType(item) == "Function") return function () {
-        return item.call(this, ...arguments)
-    }
-    if (checkType(item) == "Object") {
-        let obj = {}
-        for (let index in item) {
-            obj[index] = item[index]
-        }
-        return obj
-    }
-    if (checkType(item) == "Array") {
-        let arr = []
-        for (let i = 0; i < item.length; i++) {
-            arr[i] = item[i]
-        }
-        return arr
-    }
-    return item
-}
 
 // JSON的parse和stringify方法也可以实现强拷贝
 // 比较简单的深拷贝写法
@@ -53,6 +29,7 @@ function deepClone(item) {
     }
     return result
 }
+
 
 // 深拷贝
 function deepCopy(item, cache = new Set()) {
@@ -78,6 +55,9 @@ function deepCopy(item, cache = new Set()) {
     }
     return shallowCopy(item)
 }
+
+let aaaa = [1,2,3]
+console.log(aaaa === deepCopy(aaaa));
 
 
 

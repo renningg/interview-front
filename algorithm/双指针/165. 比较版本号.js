@@ -43,24 +43,19 @@ var compareVersion = function (version1, version2) {
 compareVersion(version1, version2)
 
 function fn(version1, version2) {
-  let arr1 = version1.split(".").map(item => parseInt(item))
-  let arr2 = version2.split(".").map(item => parseInt(item))
-  console.log(arr1, arr2);
-  let len = Math.max(arr1.length, arr2.length)
-  for (let i = 0; i < len; i++) {
-    let x = 0, y = 0;
-    if (i < arr1.length) {
-      x = arr1[i]
-    }
-    if (i < arr2.length) {
-      y = arr2[i]
-    }
-    if (x > y) {
+  let arr1 = version1.split(".").map((item) => parseInt(item))
+  let arr2 = version2.split(".").map((item) => parseInt(item))
+  let max = Math.max(arr1.length, arr2.length)
+  for (let i = 0; i < max; i++) {
+    let num1 = arr1[i] || 0;
+    let num2 = arr2[i] || 0;
+    if (num1 > num2) {
       return 1;
-    } else if (x < y) {
-      return -1;
+    } else if (num1 < num2) {
+      return -1
+    } else if (i === max - 1) {
+      return 0
     }
   }
-  return 0;
 }
 console.log(fn(version1, version2));

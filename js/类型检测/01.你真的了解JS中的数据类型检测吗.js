@@ -1,4 +1,4 @@
-/*
+/* 基础类型：string  number  undefined  null  Symbol
  * 数据类型检测：
  *   + typeof
  *     + 直接在计算机底层基于数据类型的值（二进制）进行检测

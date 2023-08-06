@@ -1,3 +1,11 @@
+// 插入排序：
+// 时间复杂度：最坏情况下为O(N*N)，此时待排序列为逆序，或者说接近逆序
+//       最好情况下为O(N)，此时待排序列为升序，或者说接近升序。
+// 空间复杂度：O(1)
+
+// 快速排序：
+// O(nlogn)
+
 // 冒泡排序
 function bubble(arr) {
   let temp;
@@ -31,6 +39,8 @@ function quickSort(arr) {
   return quickSort(left).concat([pivot], quickSort(right));
 }
 
+
+
 // 插入排序
 function insertSort(arr) {
   for (var i = 1; i < arr.length; i++) {
@@ -47,6 +57,7 @@ function insertSort(arr) {
   }
   return arr
 }
+
 
 // 归并排序 时间复杂度O(nlogn)，空间复杂度 O(n)
 function mergeSort(list) {

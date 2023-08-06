@@ -59,6 +59,23 @@ const data = [
     { id: '15', name: '小涛', pid: '06', job: '运维工程师' }
 ]
 
+function aa(data) {
+    data.map(item => {
+        item.label = item.name;
+        delete item.name
+        return item
+    })
+    let tree = [];
+    data.map(item => {
+        if (!item.pid) {
+            item.children = []
+            tree.push(item)
+        } else {
+            item.children.push(item)
+        }
+    })
+}
+
 function arrToTree(data) {
     let tree = []
     // if (!Array.isArray(data)) {
