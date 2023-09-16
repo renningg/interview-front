@@ -86,3 +86,59 @@ function arrToTree(data) {
 }
 
 
+
+class TreeNode {
+    constructor(val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+let tree = new TreeNode(1)
+tree.left = new TreeNode(2)
+tree.right = new TreeNode(3)
+tree.left.left = new TreeNode(4)
+tree.left.right = new TreeNode(5)
+tree.right.left = new TreeNode(6)
+tree.right.right = new TreeNode(7)
+
+
+function handleTree(tree) {
+    let res = [];
+    if (!tree) return;
+    const dfs = (node) => {
+        // if (!node) return;
+        res.push(node.val)
+        if (node.left) {
+            dfs(node.left)
+        }
+        if (node.right) {
+            dfs(node.right)
+        }
+
+    }
+    dfs(tree)
+    return res
+}
+
+// console.log(handleTree(tree));
+
+function bfs(tree) {
+    let stack = [tree];
+    let res = []
+    while (stack.length) {
+        let node = stack.pop()
+        res.push(node.val)
+
+        if (node.right) {
+            stack.push(node.right)
+        }
+        if (node.left) {
+            stack.push(node.left)
+        }
+    }
+    return res;
+}
+console.log(bfs(tree));
+

@@ -41,3 +41,15 @@ function test(root) {
 // 
 // TreeMap(root)
 test(root)
+
+function cengXu(tree) {
+  let res = [];
+  const dfs = (node, deep) => {
+    if (!node) return;
+    if (res.length === deep) res.push([])
+    res[deep].push(node.val)
+    dfs(node.left, deep + 1)
+    dfs(node.right, deep + 1)
+  }
+  return res;
+}

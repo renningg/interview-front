@@ -11,7 +11,7 @@ const debounce = (fn, delay) => {
 }
 //节流就是指连续触发事件但是在 n 秒中只执行一次函数。节流会稀释函数的执行频率
 // 节流
-const throttle = (fn, delay) => {
+const throttle = (fn, delay) => {    
     let lastTime = 0;
     return () => {
         let nowTime = Date.now();

@@ -1,6 +1,6 @@
 https://blog.csdn.net/snsHL9db69ccu1aIKl9r/article/details/119192986?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166933967316800192214726%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166933967316800192214726&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-119192986-null-null.142^v66^pc_rank_34_queryrelevant25,201^v3^control_2,213^v2^t3_esquery_v3&utm_term=webpack%E9%9D%A2%E8%AF%95%E9%A2%98&spm=1018.2226.3001.4187
 
-# webpack是解决什么问题而生的?
+# webpack是解决什么问题而生的?   
 如果像以前开发时一个html文件可能会引用十几个js文件,而且顺序还不能乱，因为它们存在依赖关系，
 同时对于ES6+等新的语法，less, sass等CSS预处理都不能很好的解决……，此时就需要一个处理这些问题的工具。
 

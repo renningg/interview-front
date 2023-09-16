@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 默认情况下，一个没有指定宽度和高度的绝对定位元素的宽度和高度都是 0。所以，.box1 元素的宽度为 0。 -->
+
+<body>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      position: relative;
+
+      .box1,
+      .box2,
+      .box3 {
+        height: 50px;
+      }
+
+      .box1 {
+        position: absolute;
+        border: 1px solid black;
+      }
+
+      .box2 {
+        border: 1px solid orange;
+        /* margin: 0 20px; */
+      }
+
+      .box3 {
+        border: 1px solid yellow;
+      }
+
+    }
+  </style>
+  <div class="box">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+  </div>
+
+  <script>
+    function fn1() {
+      try {
+        throw ("Error")
+      }
+      finally {
+        console.log("run");
+      }
+    }
+    function fn2() {
+      try {
+        console.log("run");
+      }
+      finally {
+        throw ("Error")
+      }
+    }
+    function fn3() {
+      var i = 0
+      while (i < 3) {
+        try {
+          i++
+          break
+        }
+        finally {
+          console.log(i);
+        }
+      }
+    }
+    fn1()
+    fn2()
+    fn3()
+  </script>
+</body>
+
+</html>
